@@ -1,15 +1,48 @@
 import Container from "../../components/Container";
+import { mainURL } from "../../constants/URLs";
 import { Form, Input, StyledLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import AuthContext from "../../contexts/AuthContext";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 
 export default function Login() {
+
+    const {authLogin, auth} = useContext(AuthContext)
+    const navigate = useNavigate()
+    const [loginForm, setLoginForm] = useState({email:'', password:''})
+
+    useEffect(() => {
+        if (auth?.token) {
+            navigate('/store')
+        }
+    }, [])
+    
+    function changeSignIn (e) {
+        setLoginForm({...loginForm, [e.target.name]: e.target.value})
+    }
+
+    function submitSignIn (e) {
+        e.preventDefault()
+
+        const promise = axios.post(`${mainURL}/signin`, {...loginForm})
+        promise.then((res) => {
+            authLogin(res.data)
+            navigate('/store')
+        })
+        promise.catch((err) => {
+            console.log(err)
+        })
+    }
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={submitSignIn}>
         <Input
           type={"email"}
           name="email"
           value={loginForm.email}
-          onChange={changeInput}
+          onChange={changeSignIn}
           placeholder="E-mail"
           required
         ></Input>
@@ -17,7 +50,7 @@ export default function Login() {
           type={"password"}
           name="password"
           value={loginForm.password}
-          onChange={changeInput}
+          onChange={changeSignIn}
           placeholder="Senha"
           required
         ></Input>
