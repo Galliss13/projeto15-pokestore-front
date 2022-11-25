@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 import { mainURL } from "../../constants/URLs";
-import { Form, Input, StyledLink } from "react-router-dom";
+import { Form, Input, StyledLink, Button } from "../../components/Form";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import { useState, useEffect, useContext } from "react";

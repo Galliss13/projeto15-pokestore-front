@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 import { mainURL } from "../../constants/URLs";
-import { Form, Input, StyledLink } from "../../components/Form";
+import { Form, Input, StyledLink, Button } from "../../components/Form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
@@ -13,7 +13,7 @@ export default function Register() {
         name:'',
         email:'',
         password:'',
-        repeatPassword:''
+        repassword:''
     })
 
     function changeSignUp(e) {
@@ -40,7 +40,7 @@ export default function Register() {
         <Input
           type={"text"}
           name="name"
-          value={loginForm.name}
+          value={signupForm.name}
           onChange={changeSignUp}
           placeholder="Nome"
           required
@@ -48,7 +48,7 @@ export default function Register() {
         <Input
           type={"email"}
           name="email"
-          value={loginForm.email}
+          value={signupForm.email}
           onChange={changeSignUp}
           placeholder="E-mail"
           required
@@ -56,15 +56,15 @@ export default function Register() {
         <Input
           type={"password"}
           name="password"
-          value={loginForm.password}
-          onChange={changeInput}
+          value={signupForm.password}
+          onChange={changeSignUp}
           placeholder="Senha"
           required
         ></Input>
         <Input
           type={"password"}
           name="repassword"
-          value={loginForm.repassword}
+          value={signupForm.repassword}
           onChange={changeSignUp}
           placeholder="Repita a senha"
           required
