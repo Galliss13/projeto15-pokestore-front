@@ -26,7 +26,7 @@ export default function Register() {
         const promise = axios.post(`${mainURL}/signup`,{...signupForm})
         promise.then((res) => {
             res.sendStatus(201)
-            navigate('/signin')
+            navigate('/')
         })
         promise.catch((err) => {
             console.log(err.message)
@@ -71,7 +71,7 @@ export default function Register() {
         ></Input>
         <Button type={'submit'} >Cadastrar</Button>
       </Form>
-      <StyledLink to='/signin'>Já tem uma conta? Faça login</StyledLink>
+      <StyledLink to='/'>Já tem uma conta? Faça login</StyledLink>
     </Container>
   );
 }

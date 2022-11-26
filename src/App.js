@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Login, Register, Store, Checkout, Cart } from './pages';
+import GlobalStyle from './styles/Globalstyle';
 import { useState } from 'react';
 import AuthContext from './contexts/AuthContext';
 
@@ -15,10 +16,11 @@ function App() {
 
   return (
     <AuthContext.Provider value={{auth, authLogin}}>
+      <GlobalStyle/>
       <BrowserRouter>
         <Routes>
           <Route path='/signup' element={<Register/>}></Route>
-          <Route path='/signin'element={<Login/>}></Route>
+          <Route path='/'element={<Login/>}></Route>
           <Route path='/store'element={<Store/>}></Route>
           <Route path='/cart'element={<Cart/>}></Route>
           <Route path='checkout'element={<Checkout/>}></Route>

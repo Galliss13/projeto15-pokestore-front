@@ -1,6 +1,6 @@
 import Container from "../../components/Container";
 import { mainURL } from "../../constants/URLs";
-import { Form, Input, StyledLink, Button } from "../../components/Form";
+import { Form, Input, StyledLink, Button, Formdiv } from "../../components/Form";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import { useState, useEffect, useContext } from "react";
@@ -37,26 +37,28 @@ export default function Login() {
 
   return (
     <Container>
-      <Form onSubmit={submitSignIn}>
-        <Input
-          type={"email"}
-          name="email"
-          value={loginForm.email}
-          onChange={changeSignIn}
-          placeholder="E-mail"
-          required
-        ></Input>
-        <Input
-          type={"password"}
-          name="password"
-          value={loginForm.password}
-          onChange={changeSignIn}
-          placeholder="Senha"
-          required
-        ></Input>
-        <Button type={"submit"}>Cadastrar</Button>
-      </Form>
-      <StyledLink to='/signup'>Não tem uma conta? Cadastre-se</StyledLink>
+      <Formdiv>
+        <Form onSubmit={submitSignIn}>
+          <Input
+            type={"email"}
+            name="email"
+            value={loginForm.email}
+            onChange={changeSignIn}
+            placeholder="E-mail"
+            required
+          ></Input>
+          <Input
+            type={"password"}
+            name="password"
+            value={loginForm.password}
+            onChange={changeSignIn}
+            placeholder="Senha"
+            required
+          ></Input>
+          <Button type={"submit"}>Cadastrar</Button>
+        </Form>
+        <StyledLink to='/signup'>Não tem uma conta? Cadastre-se</StyledLink>
+      </Formdiv>
     </Container>
   );
 }
