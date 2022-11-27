@@ -1,6 +1,7 @@
 import Container from "../../components/Container";
 import { mainURL } from "../../constants/URLs";
 import { Form, Input, StyledLink, Button, Formdiv } from "../../components/Form";
+import Logo from "../../components/Logo";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../../contexts/AuthContext";
 import { useState, useEffect, useContext } from "react";
@@ -37,6 +38,7 @@ export default function Login() {
 
   return (
     <Container>
+      <Logo/>
       <Formdiv>
         <Form onSubmit={submitSignIn}>
           <Input
