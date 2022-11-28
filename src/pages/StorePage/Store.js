@@ -2,13 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { white } from "../../constants/colors";
-
+import { useNavigate } from "react-router-dom";
 
 
 export default function Store() {
 const [data, setData] = useState([])
 const [typeProducts, setTypeProducts] = useState([])
 const [takeInfo, setTakeInfo] = useState("")
+const navigate = useNavigate()
 
 useEffect(() => {
   const config = {
@@ -18,10 +19,10 @@ useEffect(() => {
   };
 
   axios
-    .get("http://localhost:5000/store", config)
+    .get("/store", config)
     .then((res) => {
       console.log(res.data);
-      setData(res.data.isUser);
+      setData(res.data);
     })
     .catch((err) => {
       console.log(err);
@@ -40,9 +41,9 @@ useEffect(() => {
   return (
     <Conteiner>
       <Sidebar>
-        <TypeItens onClick={() => setTakeInfo("pokeball")}>a</TypeItens>
-        <TypeItens onClick={() => setTakeInfo("potion")}>a</TypeItens>
-        <TypeItens onClick={() => setTakeInfo("item")}>a</TypeItens>
+        <TypeItens onClick={() => setTakeInfo("pokeball")}>Pokeballs</TypeItens>
+        <TypeItens onClick={() => setTakeInfo("potion")}>Apricorns</TypeItens>
+        <TypeItens onClick={() => setTakeInfo("item")}>Jewels</TypeItens>
       </Sidebar>
       <DisplayConteiner>
         <LayoutStore>
@@ -57,7 +58,7 @@ useEffect(() => {
         </LayoutStore>
         <ConteinerInfos>
           <Comments>COMMENT QUESTION</Comments>
-          <ConfirmPurchases>Finalizar compra</ConfirmPurchases>
+          <ConfirmPurchases onClick={() => navigate('/cart')}>Finalizar compra</ConfirmPurchases>
         </ConteinerInfos>
       </DisplayConteiner>
     </Conteiner>
@@ -90,6 +91,8 @@ const TypeItens = styled.div`
   border: none;
   border-radius: 20px;
   box-shadow: 10px 10px 15px black;
+  color: ${white};
+  font-family: 'Permanent Marker', cursive;
 `;
 const DisplayConteiner = styled.div`
   display: flex;
@@ -125,9 +128,10 @@ const Comments = styled.div`
   background-color: ${white};
   border: 5px solid black;
   border-radius: 20px;
+  font-family: 'Permanent Marker', cursive;
 
   h1 {
-    font-family: "Times New Roman", Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
     color: #000000;
   }
@@ -140,4 +144,6 @@ const ConfirmPurchases = styled.button`
   border-radius: 20px;
   box-shadow: 10px 10px 15px black;
   background-color: green;
+  color: ${white};
+  font-family: 'Permanent Marker', cursive;
 `;
