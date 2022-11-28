@@ -31,12 +31,20 @@ useEffect(() => {
     
   useEffect(() => {
     setTypeProducts([]);
-    data.forEach((product) => {
-      if (product.type === takeInfo) {
-        setTypeProducts((prev) => [...prev, product]);
+    data.forEach((prod) => {
+      if (prod.type === takeInfo) {
+        setTypeProducts((prev) => [...prev, prod]);
       }
     });
   }, [takeInfo, data]);
+
+  function addInArray(item) {
+    const addArray = sendArray.some((prod) => prod.id === item.id)
+    if (!addArray) {
+        const newArray = [...sendArray, item]
+        setSendArray(newArray)
+    }
+}
 
   return (
     <Conteiner>
@@ -51,7 +59,11 @@ useEffect(() => {
             typeProducts.map((el, index) => {
               const {_id, type, value, name, description, img} = el;
               return(
-                <DivStore>{name}</DivStore>
+                <DivStore>
+                  <img src={img} alt="logo"/>
+                  <h1>{name}</h1>
+                  <span>{value}</span>
+                </DivStore>
               )
             })
           }
@@ -110,9 +122,28 @@ const LayoutStore = styled.div`
 `;
 
 const DivStore = styled.div `
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   display: flex;
+  
+
+  img {
+    width: 70px;
+    height: 50px;
+  }
+
+  h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  span {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+  }
+
+
 
 `
 const ConteinerInfos = styled.div`
@@ -147,3 +178,5 @@ const ConfirmPurchases = styled.button`
   color: ${white};
   font-family: 'Permanent Marker', cursive;
 `;
+
+
