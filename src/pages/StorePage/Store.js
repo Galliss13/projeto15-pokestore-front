@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
+import { white } from "../../constants/colors";
 
 
 
@@ -86,6 +87,9 @@ const TypeItens = styled.div`
   align-items: center;
   background-color: #6d2928;
   margin-bottom: 15px;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 10px 10px 15px black;
 `;
 const DisplayConteiner = styled.div`
   display: flex;
@@ -95,9 +99,10 @@ const LayoutStore = styled.div`
   width: 63vw;
   height: 70vh;
   background-color: #e6e6e6;
-  box-shadow: rgb(2, 2, 2);
+  box-shadow: 10px 10px 15px black;
   margin-bottom: 15px;
-  border: 5px solid black;
+  border: none;
+  border-radius: 20px;
   padding: 10px;
 `;
 
@@ -114,9 +119,12 @@ const ConteinerInfos = styled.div`
 
 `;
 const Comments = styled.div`
+    margin-top: 20px;
   width: 400px;
   height: 110px;
+  background-color: ${white};
   border: 5px solid black;
+  border-radius: 20px;
 
   h1 {
     font-family: "Times New Roman", Times, serif;
@@ -128,6 +136,8 @@ const Comments = styled.div`
 const ConfirmPurchases = styled.button`
   width: 100px;
   height: 50px;
-  border: 3px solid black;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 10px 10px 15px black;
   background-color: green;
 `;
