@@ -21,21 +21,27 @@ const Caption = styled.div`
 `
 const Product = styled.div`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 20px;
 `
-const Image = styled.image``
 
-const Name = styled.p``
+const Name = styled.p`
+    margin-right: 60px;
+`
 
-const Amount = styled.p``
+const Amount = styled.p`
+    margin-right: 60px;
+`
 
-const Price = styled.p``
+const Price = styled.p`
+    margin-right: 10px;
+`
 
 export {
     Cartdiv,
     Caption,
     Product,
-    Image,
     Name,
     Amount,
     Price
