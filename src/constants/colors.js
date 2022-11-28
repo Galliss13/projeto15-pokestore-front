@@ -1,4 +1,4 @@
-const red = '#b9030f'
+const red = '##D81819'
 const wine = '#9e0004'
 const brown = '#70160e'
 const black = '#161917'
