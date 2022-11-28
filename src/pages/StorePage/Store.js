@@ -2,8 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-
-
 export default function Store() {
 const [data, setData] = useState([])
 const [typeProducts, setTypeProducts] = useState([])
