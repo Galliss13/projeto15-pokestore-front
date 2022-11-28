@@ -6,6 +6,8 @@ export default function Store() {
 const [data, setData] = useState([])
 const [typeProducts, setTypeProducts] = useState([])
 const [takeInfo, setTakeInfo] = useState("")
+const [descriptions, setDescriptions] = useState("")
+const [sendArray, setSendArray] = useState("")
 
 useEffect(() => {
   const config = {
@@ -27,18 +29,27 @@ useEffect(() => {
     
   useEffect(() => {
     setTypeProducts([]);
-    data.forEach((product) => {
-      if (product.type === takeInfo) {
-        setTypeProducts((prev) => [...prev, product]);
+    data.forEach((prod) => {
+      if (prod.type === takeInfo) {
+        setTypeProducts((prev) => [...prev, prod]);
       }
     });
   }, [takeInfo, data]);
+
+  function addInArray(item) {
+    const addArray = sendArray.some((prod) => prod.id === item.id)
+    if (!addArray) {
+        const newArray = [...sendArray, item]
+        setSendArray(newArray)
+    }
+}
 
   return (
     <Conteiner>
       <Sidebar>
         <TypeItens onClick={() => setTakeInfo("pokeball")}>a</TypeItens>
         <TypeItens onClick={() => setTakeInfo("potion")}>a</TypeItens>
+        <TypeItens onClick={() => setTakeInfo("item")}>a</TypeItens>
         <TypeItens onClick={() => setTakeInfo("item")}>a</TypeItens>
       </Sidebar>
       <DisplayConteiner>
@@ -47,13 +58,19 @@ useEffect(() => {
             typeProducts.map((el, index) => {
               const {_id, type, value, name, description, img} = el;
               return(
-                <DivStore>{name}</DivStore>
+                <DivStore>
+                  <img src={img} alt="logo"/>
+                  <h1>{name}</h1>
+                  <span>{value}</span>
+                </DivStore>
               )
             })
           }
         </LayoutStore>
         <ConteinerInfos>
-          <Comments>COMMENT QUESTION</Comments>
+          <Comments>COMMENT QUESTION
+          {/* <span>{description}</span> */}
+          </Comments>
           <ConfirmPurchases>Finalizar compra</ConfirmPurchases>
         </ConteinerInfos>
       </DisplayConteiner>
@@ -100,9 +117,28 @@ const LayoutStore = styled.div`
 `;
 
 const DivStore = styled.div `
-  width: 200px;
-  height: 100px;
+  width: 300px;
+  height: 200px;
   display: flex;
+  
+
+  img {
+    width: 70px;
+    height: 50px;
+  }
+
+  h1 {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  span {
+    font-family: 'Permanent Marker', cursive;
+    font-size: 18px;
+  }
+
+
 
 `
 const ConteinerInfos = styled.div`
@@ -129,3 +165,5 @@ const ConfirmPurchases = styled.button`
   border: 3px solid black;
   background-color: green;
 `;
+
+
