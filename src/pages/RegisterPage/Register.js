@@ -1,9 +1,10 @@
 import Container from "../../components/Container";
 import { mainURL } from "../../constants/URLs";
-import { Form, Input, StyledLink, Button } from "../../components/Form";
+import { Form, Input, StyledLink, Button, Formdiv } from "../../components/Form";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import Logo from "../../components/Logo";
 
 
 export default function Register() {
@@ -36,42 +37,45 @@ export default function Register() {
 
   return (
     <Container>
-      <Form onSubmit={submitSignUp}>
-        <Input
-          type={"text"}
-          name="name"
-          value={signupForm.name}
-          onChange={changeSignUp}
-          placeholder="Nome"
-          required
-        ></Input>
-        <Input
-          type={"email"}
-          name="email"
-          value={signupForm.email}
-          onChange={changeSignUp}
-          placeholder="E-mail"
-          required
-        ></Input>
-        <Input
-          type={"password"}
-          name="password"
-          value={signupForm.password}
-          onChange={changeSignUp}
-          placeholder="Senha"
-          required
-        ></Input>
-        <Input
-          type={"password"}
-          name="repassword"
-          value={signupForm.repassword}
-          onChange={changeSignUp}
-          placeholder="Repita a senha"
-          required
-        ></Input>
-        <Button type={'submit'} >Cadastrar</Button>
-      </Form>
+      <Logo/>
+      <Formdiv>
+        <Form onSubmit={submitSignUp}>
+          <Input
+            type={"text"}
+            name="name"
+            value={signupForm.name}
+            onChange={changeSignUp}
+            placeholder="Nome"
+            required
+          ></Input>
+          <Input
+            type={"email"}
+            name="email"
+            value={signupForm.email}
+            onChange={changeSignUp}
+            placeholder="E-mail"
+            required
+          ></Input>
+          <Input
+            type={"password"}
+            name="password"
+            value={signupForm.password}
+            onChange={changeSignUp}
+            placeholder="Senha"
+            required
+          ></Input>
+          <Input
+            type={"password"}
+            name="repassword"
+            value={signupForm.repassword}
+            onChange={changeSignUp}
+            placeholder="Repita a senha"
+            required
+          ></Input>
+          <Button type={'submit'} >Cadastrar</Button>
+        </Form>
       <StyledLink to='/'>Já tem uma conta? Faça login</StyledLink>
+      </Formdiv>
     </Container>
   );
 }
